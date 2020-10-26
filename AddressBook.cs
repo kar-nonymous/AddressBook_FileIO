@@ -6,6 +6,9 @@
 // --------------------------------------------------------------------------------------------------------------------
 using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace AddressBook_IOFile
@@ -240,6 +243,43 @@ namespace AddressBook_IOFile
                     count++;
             }
             Console.WriteLine("Count for city or state (" + cityState + ") is: " + count);
+        }
+        /// <summary>
+        /// UC 13 
+        /// Reads the file.
+        /// </summary>
+        public static void ReadFile()
+        {
+            string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.txt";
+            if (File.Exists(path))
+            {
+                using (StreamReader streamReader = File.OpenText(path))
+                {
+                    string line = "";
+                    while ((line = streamReader.ReadLine()) != null)
+                        Console.WriteLine(line); ;
+                }
+            }
+            else
+                Console.WriteLine("File not found");
+        }
+        /// <summary>
+        /// UC 13 
+        /// Writes into the file.
+        /// </summary>
+        /// <param name="addressBook">The address book.</param>
+        public static void WriteFile(AddressBook addressBook)
+        {
+            string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.txt";
+            if (File.Exists(path))
+            {
+                using (StreamWriter streamWriter = File.AppendText(path))
+                {
+                    /// Writes the entered string into the file
+                    streamWriter.Write(addressBook.contactList);
+                }
+            }
+            ReadFile();
         }
     }
 }

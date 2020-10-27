@@ -253,12 +253,10 @@ namespace AddressBook_IOFile
             string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.txt";
             if (File.Exists(path))
             {
-                using (StreamReader streamReader = File.OpenText(path))
-                {
-                    string line = "";
-                    while ((line = streamReader.ReadLine()) != null)
-                        Console.WriteLine(line); ;
-                }
+                using StreamReader streamReader = File.OpenText(path);
+                string line = "";
+                while ((line = streamReader.ReadLine()) != null)
+                    Console.WriteLine(line); ;
             }
             else
                 Console.WriteLine("File not found");
@@ -273,14 +271,12 @@ namespace AddressBook_IOFile
             string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.txt";
             if (File.Exists(path))
             {
-                using (StreamWriter streamWriter = File.AppendText(path))
+                using StreamWriter streamWriter = File.AppendText(path);
+                streamWriter.Write(contactList);
+                for (int i = 0; i < contactList.Count; i++)
                 {
-                    streamWriter.Write(contactList);
-                    for (int i = 0; i < contactList.Count; i++)
-                    {
-                        string line = contactList[i].firstName + contactList[i].lastName + contactList[i].address + contactList[i].city + contactList[i].state + contactList[i].zip + contactList[i].phnNo + contactList[i].email;
-                        streamWriter.Write(line);
-                    }
+                    string line = contactList[i].firstName + " " + contactList[i].lastName + " " + contactList[i].address + " " + contactList[i].city + " " + contactList[i].state + " " + contactList[i].zip + " " + contactList[i].phnNo + " " + contactList[i].email;
+                    streamWriter.Write(line);
                 }
             }
             ReadFileIO();

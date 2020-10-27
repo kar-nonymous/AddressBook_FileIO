@@ -22,6 +22,7 @@ namespace AddressBook_IOFile
 
                 Console.WriteLine("1: Add New Address Book \n2: Add Contacts \n3: Edit Contacts \n4: Delete Contacts \n5: Display Contacts \n6: Search contact using city or state name \n7: Display city and state list \n8: Count person from city or state ");
                 string options = Console.ReadLine();
+                AddressBook addressBook = new AddressBook();
                 /// <summary>
                 /// To select from different options available
                 /// </summary>
@@ -50,6 +51,9 @@ namespace AddressBook_IOFile
                         break;
                     case "8":
                         CountForPersonFromCityOrState();
+                        break;
+                    case "9":
+                        addressBook.WriteFileIO();
                         break;
                     default:
                         flag = false;

@@ -20,7 +20,7 @@ namespace AddressBook_IOFile
             while (flag)
             {
 
-                Console.WriteLine("1: Add New Address Book \n2: Add Contacts \n3: Edit Contacts \n4: Delete Contacts \n5: Display Contacts \n6: Search contact using city or state name \n7: Display city and state list \n8: Count person from city or state ");
+                Console.WriteLine("1: Add New Address Book \n2: Add Contacts \n3: Edit Contacts \n4: Delete Contacts \n5: Display Contacts \n6: Search contact using city or state name \n7: Display city and state list \n8: Count person from city or state \n9: Write to .txt file \n10: Write to .csv file");
                 string options = Console.ReadLine();
                 AddressBook addressBook = new AddressBook();
                 /// <summary>
@@ -54,6 +54,9 @@ namespace AddressBook_IOFile
                         break;
                     case "9":
                         addressBook.WriteFileIO();
+                        break;
+                    case "10":
+                        addressBook.WriteInCSVFormat();
                         break;
                     default:
                         flag = false;

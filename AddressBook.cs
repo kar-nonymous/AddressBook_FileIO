@@ -4,8 +4,10 @@
 // </copyright>
 // <creator Name="Kumar Kartikeya"/>
 // --------------------------------------------------------------------------------------------------------------------
+using CsvHelper;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -275,11 +277,24 @@ namespace AddressBook_IOFile
                 streamWriter.Write(contactList);
                 for (int i = 0; i < contactList.Count; i++)
                 {
-                    string line = contactList[i].firstName + " " + contactList[i].lastName + " " + contactList[i].address + " " + contactList[i].city + " " + contactList[i].state + " " + contactList[i].zip + " " + contactList[i].phnNo + " " + contactList[i].email;
-                    streamWriter.Write(line);
+                    string line = contactList[i].firstName + " " + contactList[i].lastName + " " + contactList[i].address + " " + contactList[i].city + " " + contactList[i].state + " " + contactList[i].zip + " " + contactList[i].phnNo + " " + contactList[i].email + "\n";
+                    streamWriter.WriteLine(line);
                 }
+                streamWriter.Flush();
+                streamWriter.Close();
             }
-            ReadFileIO();
+        }
+        public void WriteInCSVFormat()
+        {
+            string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.csv";
+            if(File.Exists(path))
+            {
+                using StreamWriter streamWriter = new StreamWriter(path);
+                var csv = new CsvWriter(streamWriter, CultureInfo.InvariantCulture);
+                csv.WriteRecords(contactList);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
         }
     }
 }

@@ -15,14 +15,14 @@ namespace AddressBook_IOFile
     /// </summary>
     public class Contacts
     {
-        public string firstName;
-        public string lastName;
-        public string address;
-        public string city;
-        public string state;
-        public string email;
-        public string zip;
-        public string phnNo;
+        public string firstName { get; set; }
+        public string lastName { get; set; }
+        public string address { get; set; }
+        public string city { get; set; }
+        public string state { get; set; }
+        public string zip { get; set; }
+        public string phnNo { get; set; }
+        public string email { get; set; }
         /// <summary>
         /// Initializes a new instance of the <see cref="Contacts"/> class.
         /// </summary>

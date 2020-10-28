@@ -9,9 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Text;
+using Newtonsoft.Json;
 
 namespace AddressBook_IOFile
 {
@@ -33,6 +31,9 @@ namespace AddressBook_IOFile
         /// The state dictionary is created
         /// </summary>
         public Dictionary<string, Contacts> stateDictionary = new Dictionary<string, Contacts>();
+
+        public object JsonConvert { get; private set; }
+
         /// <summary>
         /// Method to add the personal details
         /// </summary>
@@ -299,6 +300,15 @@ namespace AddressBook_IOFile
                 streamWriter.Flush();
                 streamWriter.Close();
             }
+        }
+        public void WriteInJsonFormat()
+        {
+            string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.json";
+            using StreamWriter streamWriter = new StreamWriter(path);
+            JsonSerializer jsonSerializer = new JsonSerializer();
+            jsonSerializer.Serialize(streamWriter, contactList);
+            streamWriter.Flush();
+            streamWriter.Close();
         }
     }
 }

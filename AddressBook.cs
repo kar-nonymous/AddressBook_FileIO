@@ -284,6 +284,10 @@ namespace AddressBook_IOFile
                 streamWriter.Close();
             }
         }
+        /// <summary>
+        /// UC 14
+        /// Writes the data from contactList to CSV file.
+        /// </summary>
         public void WriteInCSVFormat()
         {
             string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.csv";

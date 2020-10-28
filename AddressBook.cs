@@ -301,14 +301,21 @@ namespace AddressBook_IOFile
                 streamWriter.Close();
             }
         }
+        /// <summary>
+        /// UC 15
+        /// Writes the data from contactList to json file.
+        /// </summary>
         public void WriteInJsonFormat()
         {
             string path = @"C:\Users\Kartikeya\source\repos\AddressBook_IOFile\AddressBook_IOFile\ContactList.json";
-            using StreamWriter streamWriter = new StreamWriter(path);
-            JsonSerializer jsonSerializer = new JsonSerializer();
-            jsonSerializer.Serialize(streamWriter, contactList);
-            streamWriter.Flush();
-            streamWriter.Close();
+            if(File.Exists(path))
+            {
+                using StreamWriter streamWriter = new StreamWriter(path);
+                JsonSerializer jsonSerializer = new JsonSerializer();
+                jsonSerializer.Serialize(streamWriter, contactList);
+                streamWriter.Flush();
+                streamWriter.Close();
+            }
         }
     }
 }

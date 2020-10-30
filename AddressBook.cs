@@ -272,7 +272,6 @@ namespace AddressBook_IOFile
             if (File.Exists(path))
             {
                 using StreamWriter streamWriter = File.AppendText(path);
-                streamWriter.Write(contactList);
                 for (int i = 0; i < contactList.Count; i++)
                 {
                     string line = contactList[i].firstName + " " + contactList[i].lastName + " " + contactList[i].address + " " + contactList[i].city + " " + contactList[i].state + " " + contactList[i].zip + " " + contactList[i].phnNo + " " + contactList[i].email;
